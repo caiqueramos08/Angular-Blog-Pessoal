@@ -15,15 +15,11 @@
 
                     <h1 class="text-center"> Cadastro</h1>
 
-                    <form class="needs-validation" novalidate>
+                    <form class="form-group" novalidate>
                         <div class="form-group">
                             <div class="col-md-10 mb-10">
                                 <label for="nome">Nome:</label>
-                                <input type="text" class="form-control" id="validationCustom01" placeholder="Nome"
-                                    value="Nome" required>
-                                <div class="valid-feedback">
-                                    Tudo certo!
-                                </div>
+                                <input [(ngModel)]='user.nome' type="text" class="form-control" id="validationCustom01" placeholder="nome">
                             </div>
                             <div class="col-md-10 mb-10">
                                 <label for="usuario">Usuário:</label>
@@ -31,42 +27,32 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                                     </div>
-                                    <input type="text" class="form-control" id="usuario" placeholder="Usuário"
+                                    <input [(ngModel)]='user.usuario' type="text" class="form-control" id="usuario" placeholder="Usuário"
                                         aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Por favor, escolha um nome de usuário.
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-10 mb-10">
                                 <label for="foto">Link da Foto:</label>
-                                <input type="text" class="form-control" id="foto" placeholder="Link da Foto" required>
-                                <div class="invalid-feedback">
-                                    Por favor, informe um Link válido.
-                                </div>
+                                <input [(ngModel)]='user.foto' type="text" class="form-control" id="foto" placeholder="Link da Foto" required>
+
                             </div>
                             <div class="col-md-10 mb-10">
                                 <label for="senha">Senha:</label>
-                                <input type="text" class="form-control" id="senha" placeholder="Senha" required>
-                                <div class="invalid-feedback">
-                                    Por favor, informe uma Senha válida.
-                                </div>
+                                <input (input)='confirmSenha($event)' type="text" class="form-control" id="senha" placeholder="Senha" required>
+                               
                             </div>
                             <div class="col-md-10 mb-10">
                                 <label for="confirmSenha">Confirma Senha:</label>
-                                <input type="text" class="form-control" id="confirmSenha"
+                                <input [(ngModel)]='user.senha' type="text" class="form-control" id="confirmSenha"
                                     placeholder="Confirma sua Senha" required>
-                                <div class="invalid-feedback">
-                                    Por favor,vConfirme Sua Senha correto.
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-10 mb-10">
                             <div class="form-group">
                                 <label for="tipo">Tipo de Usuario:</label>
-                                <select class="form-control" name="tipo" id="tipo">
+                                <select class="form-control" name="tipo" id="tipo" (change)='tipoUser($event)'>
                                     <option value="">Seleciona um Tipo de Usuario:</option>
                                     <option value="Normal">Normal</option>
                                     <option value="Admin">Administrador</option>
@@ -80,37 +66,16 @@
                                 <label class="form-check-label" for="invalidCheck">
                                     Concordo com os termos e condições
                                 </label>
-                                <div class="invalid-feedback">
-                                    Você deve concordar, antes de continuar.
-                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button class="btn btn-danger mr-5" type="submit" routerLink="/login">Cancelar</button>
-                            <button class="btn btn-success" type="submit">Cadastrar</button>
+                            <button type="submit" class="btn btn-success" (click)='cadastrar()'
+                            >Cadastrar</button>
                         </div>
                     </form>
 
-                    <script>
-                        // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
-                        (function () {
-                            'use strict';
-                            window.addEventListener('load', function () {
-                                // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
-                                var forms = document.getElementsByClassName('needs-validation');
-                                // Faz um loop neles e evita o envio
-                                var validation = Array.prototype.filter.call(forms, function (form) {
-                                    form.addEventListener('submit', function (event) {
-                                        if (form.checkValidity() === false) {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-                                        }
-                                        form.classList.add('was-validated');
-                                    }, false);
-                                });
-                            }, false);
-                        })();
-                    </script>
+               
 
                 </div>
 
