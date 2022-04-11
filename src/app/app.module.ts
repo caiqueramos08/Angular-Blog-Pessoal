@@ -1,14 +1,22 @@
-import {HttpClientModule} from "@angular/common/http"
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms'; // libera o ngModel pra pegar dados dos formularios em variaveis
+import { HttpClientModule } from '@angular/common/http'; //libera os metodos do CRUD
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
-import { LoginComponent } from './login/login.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { EntrarComponent } from './entrar/entrar.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { TemasComponent } from './temas/temas.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component';
+import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
+import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
+import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
+import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 
 
 @NgModule({
@@ -16,8 +24,16 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     AppComponent,
     MenuComponent,
     RodapeComponent,
-    LoginComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    EntrarComponent,
+    InicioComponent,
+    TemasComponent,
+    TemaDeleteComponent,
+    TemaEditComponent,
+    PostagemEditComponent,
+    PostagemDeleteComponent,
+    UsuarioEditComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +41,10 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

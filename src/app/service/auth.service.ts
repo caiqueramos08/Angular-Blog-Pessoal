@@ -1,30 +1,57 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CadastrarComponent } from './../cadastrar/cadastrar.component';
-import { HttpClient } from '@angular/common/http';
-import { UserLogin } from './../model/UserLogin';
 import { Observable } from 'rxjs';
-import { User } from '../model/User';
+import { environment } from 'src/environments/environment.prod';
+import { Usuario } from '../model/Usuario';
+import { UsuarioLogin } from '../model/UsuarioLogin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( 
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  entrar(userlogin: UserLogin): Observable<UserLogin>{
-    return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userlogin)
-
-
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  cadastrar(user: User): Observable<User>{
-    return this.http.post<User>('http://localhost:8080/usuarios/cadastrar', user)
-
-
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
   }
 
 
+  getUserById(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`, this.token)
+  }
+
+  logar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
+    return this.http.post<UsuarioLogin>('http://localhost:8080/usuarios/logar',usuarioLogin)
+  }
+
+  cadastrar(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
+  }
+
+  atualizar(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, this.token)
+  }
+
+  logado(){
+    let ok: boolean = false;
+    if(environment.token != '') {
+      ok = true
+    }
+    return ok
+  }
+
+  adm() {
+    let ok: boolean = false;
+    if(environment.tipo == 'admin') {
+      ok = true
+    }
+    return ok
+  }
 }

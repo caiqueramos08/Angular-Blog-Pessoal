@@ -1,0 +1,194 @@
+<div class="container-fluid color">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-md-6">
+        <h1 class="text-light text-center">
+          Bem vinde ao <br />
+          <span class="detalhe"> Blog Pessoal</span>
+        </h1>
+        <p class="text-light text-center">Faça sua Postagem Aqui!</p>
+
+        <div class="row d-flex justify-content-center mt-3 mb-5">
+          <div class="col-md-6">
+            <button class="btn btn-light mr-2" data-toggle="modal" data-target="#novaPostagem">Nova postagem</button><br><br>
+            <a class="btn btn-outline-light" href="#postagens">Ver postagens</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="https://i.imgur.com/Mg92OR7.png" alt="" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid my-3">
+  <div class="container" id="postagens">
+    <ul
+      class="nav nav-tabs d-flex justify-content-center"
+      id="myTab"
+      role="tablist"
+    >
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active text-dark font-weight-bold"
+          id="todasPostagens-tab"
+          data-toggle="tab"
+          href="#todasPostagens"
+          role="tab"
+          aria-controls="todasPostagens"
+          aria-selected="true"
+          >Todas as Postagens</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link text-dark font-weight-bold"
+          id="minhasPostagens-tab"
+          data-toggle="tab"
+          href="#minhasPostagens"
+          role="tab"
+          aria-controls="minhasPostagens"
+          aria-selected="false"
+          (click)="usuarioPorId()"
+          >Minhas Postagens</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link text-dark font-weight-bold"
+          id="postagensTema-tab"
+          data-toggle="tab"
+          href="#postagensTema"
+          role="tab"
+          aria-controls="postagensTema"
+          aria-selected="false"
+          >Postagens por Tema</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content mt-3" id="myTabContent">
+      <!-- ! Todas as postagens -->
+      <div
+        class="tab-pane fade show active"
+        id="todasPostagens"
+        role="tabpanel"
+        aria-labelledby="todasPostagens-tab"
+      >
+        <div class="row d-flex flex-column align-items-center">
+          <div class="col-md-8 border rounded mb-3" *ngFor="let postagem of listaPostagens">
+            <div class="row">
+              <div class="col-md-2">
+                <img src='{{postagem.usuario.foto}}' onerror="this.src = 'https://i.imgur.com/rNUV85x.png' " alt="" class="rounded-circle img-fluid p-3 ">
+              </div>
+              <div class="col-md-10 d-flex justify-content-between">
+                <h3>{{postagem.titulo}}</h3>
+                <small>{{postagem.tema.descricao}}</small>
+              </div>
+            </div>
+
+            <div class="row d-flex flex-column justify-content-center align-items-center">
+              <p class="px-3 w-100 text-wrap">{{postagem.texto}}</p>
+              <small>Postagem feita às {{postagem.data | date:'HH:mm'}} do dia {{postagem.data | date: 'dd/mm/yyyy'}}</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- ! Todas as postagens -->
+      <!-- ? Minhas postagens -->
+      <div
+        class="tab-pane fade"
+        id="minhasPostagens"
+        role="tabpanel"
+        aria-labelledby="minhasPostagens-tab"
+      >
+        <div class="row mt-4 d-flex flex-wrap">
+          <ng-container *ngFor="let postagem of usuario.postagem">
+            <div class="col-md-5 border rounded d-flex flex-column align-items-center">
+              <h4>{{postagem.titulo}}</h4>
+              <p>{{postagem.texto}}</p>
+              <small>Postagem feita às {{postagem.data | date:'HH:mm'}} do dia {{postagem.data | date: 'dd/mm/yyyy'}}</small>
+
+              <div class="d-flex justify-content-around w-100 my-3">
+                <button class="btn btn-outline-primary" [routerLink]="['/postagem-edit', postagem.id]">Editar</button>
+                <button class="btn btn-outline-danger" [routerLink]="['/postagem-delete', postagem.id]">Apagar</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <!-- ? Minhas postagens -->
+      <!-- * Postagens por tema -->
+      <div
+        class="tab-pane fade"
+        id="postagensTema"
+        role="tabpanel"
+        aria-labelledby="postagensTema-tab"
+      >
+        <div class="row" *ngFor="let tema of listaTemas">
+            <div class="col-md-2" *ngFor="let postagem of tema.postagem">
+              <p>{{postagem.titulo}}</p>
+            </div>
+        </div>
+      </div>
+      <!-- * Postagens por tema -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="novaPostagem"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Crie uma nova postagem
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="">Titulo da postagem</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" [(ngModel)]='postagem.titulo' />
+          </div>
+          <div class="form-group">
+            <label for="">Texto da postagem</label>
+            <textarea
+              name="texto"
+              id="texto"
+              class="form-control"
+              rows="4"
+              [(ngModel)]='postagem.texto'
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <p>
+              Escolha um tema da nossa lista, ou <a routerLink="/temas" data-dismiss="modal">cadastre um novo</a>
+            </p>
+            <select name="tema" id="tema" class="form-control" [(ngModel)]="idTema" (change)="buscarTemaPorId()">
+              <option *ngFor="let tema of listaTemas" value="{{tema.id}}">{{tema.descricao}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="criarPostagem()" data-dismiss="modal">Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
