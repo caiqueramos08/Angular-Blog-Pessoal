@@ -1,11 +1,17 @@
 .btn-accent {
-  border: 2px solid #B39ED0;
+  border: 2px solid #f6f5f7;
   background-color: transparent;
-  color: #B39ED0;
+  color: #fc1111;
 }
 
 .btn-accent:hover {
-  background-color: #B39ED0;
-  color: #fff;
+  background-color: #f10a0a;
+  color: rgb(247, 243, 243);
 }
+
+.color{
+  background-color: black;
+  
+  
+  }
 

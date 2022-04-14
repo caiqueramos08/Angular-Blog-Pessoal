@@ -1,22 +1,23 @@
-<div class="container-fluid color">
+<div class="container-fluid bg-container">
   <div class="container">
     <div class="row d-flex align-items-center">
       <div class="col-md-6">
         <h1 class="text-light text-center">
           Bem vinde ao <br />
-          <span class="detalhe"> Blog Pessoal</span>
+          <span class="detalhe"> Blog do Caco 2.0</span>
         </h1>
-        <p class="text-light text-center">Faça sua Postagem Aqui!</p>
+        <p class="text-light text-center text-color">Poste Aqui o que você está Pensando!</p>
 
         <div class="row d-flex justify-content-center mt-3 mb-5">
           <div class="col-md-6">
-            <button class="btn btn-light mr-2" data-toggle="modal" data-target="#novaPostagem">Nova postagem</button><br><br>
-            <a class="btn btn-outline-light" href="#postagens">Ver postagens</a>
-          </div>
+            <button class = "btn btn-dark mr-2 botao" data-toggle="modal"
+            data-target="#novaPostagem">Nova Postagem</button><br>
+            <br> <br><a class="btn btn-outline-dark botao2 " href="#postagens">Ver Postagens</a>
+            </div>
         </div>
-      </div>
+      </div>                           
       <div class="col-md-6">
-        <img src="https://i.imgur.com/Mg92OR7.png" alt="" class="img-fluid" />
+        <img src="" alt="" class="img-fluid" />
       </div>
     </div>
   </div>
@@ -67,6 +68,7 @@
         >
       </li>
     </ul>
+
     <div class="tab-content mt-3" id="myTabContent">
       <!-- ! Todas as postagens -->
       <div
@@ -79,7 +81,7 @@
           <div class="col-md-8 border rounded mb-3" *ngFor="let postagem of listaPostagens">
             <div class="row">
               <div class="col-md-2">
-                <img src='{{postagem.usuario.foto}}' onerror="this.src = 'https://i.imgur.com/rNUV85x.png' " alt="" class="rounded-circle img-fluid p-3 ">
+                <img src="{{postagem.usuario.foto}}" onerror="this.src = 'https://i.imgur.com/rNUV85x.png' " alt="" class="rounded-circle img-fluid p-3 ">
               </div>
               <div class="col-md-10 d-flex justify-content-between">
                 <h3>{{postagem.titulo}}</h3>
@@ -164,7 +166,7 @@
         <form>
           <div class="form-group">
             <label for="">Titulo da postagem</label>
-            <input type="text" name="titulo" id="titulo" class="form-control" [(ngModel)]='postagem.titulo' />
+            <input type="text" name="titulo" id="titulo" class="form-control" [(ngModel)]="postagem.titulo" />
           </div>
           <div class="form-group">
             <label for="">Texto da postagem</label>
@@ -173,7 +175,7 @@
               id="texto"
               class="form-control"
               rows="4"
-              [(ngModel)]='postagem.texto'
+              [(ngModel)]="postagem.texto"
             ></textarea>
           </div>
           <div class="form-group">

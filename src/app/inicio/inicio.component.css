@@ -1,11 +1,74 @@
 .detalhe {
-  color: #ffc0ae;
+  color: #fdfdff;
   font-weight: 900;
   font-size: 4.275rem;
   text-transform: uppercase;
 }
 
-.color{
-background-color: black;
+.bg-container{
 
+  background-image: url("https://i.imgur.com/a7ysJ22.png");
+}
+
+.text-color{
+
+background-color: #0c0c0c;
+
+}
+
+.botao{
+
+  color: red;
+  background-color: aliceblue;
+  position: absolute;
+  left: 5%;
+  bottom: 20px;
+  font: 200;
+  float: left;
+
+}
+
+.botao2{
+
+  color: red;
+  background-color: aliceblue;
+  position: absolute;
+  right: 0%;
+  bottom: 1px;
+  font: 50;
+  float: left;
+}
+
+.botao:hover{
+
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #ee6363;
+  color: black !important;
+
+}
+
+.botao2:hover{
+
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #ee6363;
+  color: black !important;
+  
+
+}
+
+.btn-entrar{
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #211e16;
+  color: white !important;
+  
+}
+
+.btn-entrar:hover {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #e20b0b;
+  color: black !important;
 }

@@ -1,22 +1,63 @@
-#bgImg{
-  background-image: url('https://i.imgur.com/XRUWPK6.png');
-  height: 50vh;
-  background-size: cover;
+#img-bg {
+  background-image: url("https://i.imgur.com/aPhUVQJ.png");
+  min-height: 100vh;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.color {
-  background-color: #000000;
+.caixaCadastrar {
+  padding: 28px;
+  background-color: white;
+  background: rgba(247, 247, 247, 0.877);
+  border-radius: 50px;
+  width: 90vh;
 }
 
-.text {
-  color: #ffc0ae;
+.btn-voltar {
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
-.cor {
-  background-color:#ffc0ae;
+.btn-voltar:hover {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #f0140c !important;
+  border: 1px solid #211e16;
 }
 
-.corcaixa {
-  background-color: #f7cfff;
+.btn-cadastrar {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #211e16;
+  color: white !important;
+}
+
+.btn-cadastrar:hover {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #f52c09;
+  color: black !important;
+}
+
+h2 {
+  font-weight: 83;
+}
+
+.form {
+  padding: 15px 15px 0 15px;
+}
+
+.h-100 {
+  min-height: 100vh;
+}
+
+.link {
+
+  color: black;
+}
+
+p {
+  color: rgb(55, 55, 55);
 }

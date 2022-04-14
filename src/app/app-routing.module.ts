@@ -9,6 +9,7 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component';
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
+import { SobreComponent } from './sobre/sobre.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'entrar', pathMatch:'full'},
@@ -21,10 +22,11 @@ const routes: Routes = [
   {path: 'postagem-delete/:id', component: PostagemDeleteComponent},
   {path: 'postagem-edit/:id', component: PostagemEditComponent},
   {path: 'user-edit/:id', component: UsuarioEditComponent},
+  {path: 'sobre', component: SobreComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
