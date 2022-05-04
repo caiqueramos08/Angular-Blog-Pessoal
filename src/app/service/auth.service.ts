@@ -24,19 +24,19 @@ export class AuthService {
 
 
   getUserById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`, this.token)
+    return this.http.get<Usuario>(`https://blogdocaco.herokuapp.com/usuarios/${id}`, this.token)
   }
 
   logar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
-    return this.http.post<UsuarioLogin>('http://localhost:8080/usuarios/logar',usuarioLogin)
+    return this.http.post<UsuarioLogin>('https://blogdocaco.herokuapp.com/usuarios/logar',usuarioLogin)
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario)
+    return this.http.post<Usuario>('https://blogdocaco.herokuapp.com/usuarios/cadastrar', usuario)
   }
 
   atualizar(usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, this.token)
+    return this.http.put<Usuario>('https://blogdocaco.herokuapp.com/usuarios', usuario, this.token)
   }
 
   logado(){
